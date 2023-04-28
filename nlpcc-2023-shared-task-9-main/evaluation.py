@@ -41,7 +41,7 @@ def evaluation(gold_file, pred_file):
 
 
 if __name__ == "__main__":
-    gold_file = "datasets_dev.jsonl"
+    gold_file = "./datasets/datasets_dev.jsonl"
     pred_file = "predict.txt"
     if not os.path.exists(pred_file):
         fake_pred(gold_file, pred_file)
