@@ -22,8 +22,8 @@ if __name__ == '__main__':
     train_data = change_data(train_data)
     dev_data = change_data(dev_data)
 
-    model = BertForClassify('/home/leiningjie/PycharmProjects/model/bert/chinese-bert')
+    model = BertForClassify('/home/leiningjie/PycharmProjects/model_base/bert/chinese-bert')
     trainer = ProbTrainer(use_gpu=True,  train_dataset=train_data, eval_dataset=dev_data, model=model)
-    trainer.train(batch_size=32, accumulation_steps=2, total_epoches=100,learning_rate=0.0003)
-    # acc = trainer.evaluate()
-    # print(acc)
+    trainer.train(batch_size=64, accumulation_steps=1, total_epoches=100, learning_rate=0.00008)
+    acc = trainer.evaluate()
+    print(acc)

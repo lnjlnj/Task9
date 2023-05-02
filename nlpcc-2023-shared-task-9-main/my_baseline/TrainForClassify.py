@@ -142,13 +142,13 @@ class ProbTrainer:
             logging.info('找不到可用GPU,训练将在CPU上进行...')
 
     def train(self,
-           model_savepath='./log_classify/model',
+           model_savepath='./log_classify/model_base',
            eval_epoch=None,
            total_epoches=10,
            batch_size=16,
            accumulation_steps=1,
            learning_rate=1e-4,
-           warmup_ratio=0,
+           warmup_ratio=0.2,
            weight_decay=0.1,
            eps=1e-06,
            loss_log_freq=40):
@@ -206,7 +206,7 @@ class ProbTrainer:
 
                 torch.save(state_dict, model_path)
                 print(
-                    'epoch %d obtain max acc: %.4f, saving model to %s' %
+                    'epoch %d obtain max acc: %.4f, saving model_base to %s' %
                     (epoch, result, model_path))
 
 
@@ -247,6 +247,6 @@ class ProbTrainer:
 
 
 
-            # result_path = os.path.join(self.model.model_dir,
+            # result_path = os.path.join(self.model_base.model_dir,
             #                            'evaluate_result.json')
 

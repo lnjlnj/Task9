@@ -150,7 +150,7 @@ class ProbTrainer:
             logging.info('找不到可用GPU,训练将在CPU上进行...')
 
     def train(self,
-           model_savepath='./log/model',
+           model_savepath='./log/model_base',
            eval_epoch=None,
            total_epoches=10,
            batch_size=16,
@@ -214,7 +214,7 @@ class ProbTrainer:
 
                 torch.save(state_dict, model_path)
                 print(
-                    'epoch %d obtain max score: %.4f, saving model to %s' %
+                    'epoch %d obtain max score: %.4f, saving model_base to %s' %
                     (epoch, result, model_path))
 
 
@@ -260,6 +260,6 @@ class ProbTrainer:
 
 
 
-            # result_path = os.path.join(self.model.model_dir,
+            # result_path = os.path.join(self.model_base.model_dir,
             #                            'evaluate_result.json')
 

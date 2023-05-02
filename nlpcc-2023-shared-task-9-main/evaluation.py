@@ -20,8 +20,14 @@ def fake_pred(gold_file, pred_file):
     with open(gold_file, 'r', encoding='utf-8') as fr, \
             open(pred_file, 'w', encoding='utf-8') as fw:
         for line in fr:
-            d = json.loads(line)
-            pred = ['0.66' for i in range(len(d['replys']))]
+            data = json.loads(line)
+            # pred = ['0.66' for i in range(len(data['replys']))]
+            pred = []
+            for d in data['replys']:
+                prob = d['like'] / (d['like'] + d['dislike'])
+                # prob = 10 * prob
+                # pred.append(str(int(prob)/10))
+                pred.append(str(prob))
             fw.write('\t'.join(pred) + '\n')
 
 
