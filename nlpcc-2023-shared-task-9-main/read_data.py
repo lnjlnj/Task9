@@ -1,8 +1,7 @@
 import json
-
 data_list = []
 
-with open('./datasets/datasets_dev.jsonl', 'r', encoding='utf-8') as f:
+with open('./datasets/datasets_train.jsonl', 'r', encoding='utf-8') as f:
     for line in f:
         data = json.loads(line.rstrip())
         data_list.append(data)
@@ -40,7 +39,7 @@ for n in data_list:
 
 num_10 = []
 for n in num:
-    if n <= 5:
+    if n == 5:
         num_10.append(n)
 
 
